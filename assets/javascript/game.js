@@ -5,22 +5,42 @@
 
 //list of variables
 
-var arrCrystalWhite = [ "Crystal-1-W", 
-                        "Crystal-2-W",
-                        "Crystal-3-W", 
-                        "Crystal-4-W", 
-                        "Crystal-5-W", 
-                        "Crystal-6-W", 
-                        "Crystal-7-W", 
-                        "Crystal-8-W"
-                        ];
+// var arrCrystalWhite = [ "Crystal-1-W", 
+//                         "Crystal-2-W",
+//                         "Crystal-3-W", 
+//                         "Crystal-4-W", 
+//                         "Crystal-5-W", 
+//                         "Crystal-6-W", 
+//                         "Crystal-7-W", 
+//                         "Crystal-8-W"
+//                         ];
 
-var arrCrystalBlack = [ "Crystal-1-B", 
-                        "Crystal-2-B",
-                        "Crystal-3-B", 
-                        "Crystal-4-B", 
-                        "Crystal-5-B",   
-];
+// var arrCrystalBlack = [ "Crystal-1-B", 
+//                         "Crystal-2-B",
+//                         "Crystal-3-B", 
+//                         "Crystal-4-B", 
+//                         "Crystal-5-B",   
+                    // ];
+
+var arrCrystalBlack = [
+                    '<img src="assets/images/Crystal-1-B.png" class="cPic">',
+                    '<img src="assets/images/Crystal-2-B.png" class="cPic">',
+                    '<img src="assets/images/Crystal-3-B.png" class="cPic">',
+                    '<img src="assets/images/Crystal-4-B.png" class="cPic">',
+                    '<img src="assets/images/Crystal-5-B.png" class="cPic">'
+                    ];
+
+var arrCrystalWhite = [
+                    '<img src="assets/images/Crystal-1-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-2-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-3-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-4-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-5-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-6-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-7-W.png" class="cPic">',
+                    '<img src="assets/images/Crystal-8-W.png" class="cPic">' 
+                    ];
+
 
 var arrCrystalImage = [];
 var arrCrystalValue = [];
@@ -35,7 +55,9 @@ var blackBack = true;
 
 function initialize() {
 
- //create four crystals and append them to the page
+$(".cPic").remove();  // clear out any previous pictures on a reintialize
+
+// 1. randomly pick 4 crystal images and get their names in an array  *********
 
 //alternate between white and black background pictures, just thought it would be cool. 
 
@@ -97,13 +119,28 @@ for (var i = 0; i < 4; i++) {
         }
     }
 
+
 if(blackBack) {
     blackBack = false; 
 } else {
     blackBack = true;
 }
+//1. arrCrystalImage now has all of the image names loaded
 
-console.log(arrCrystalImage);
+ for (var i = 0; i< 4; i++) {
+    $(arrCrystalImage[i]).appendTo($("#crystals"));
+ }
+
+ 
+
+
+
+
+
+
+
+
+
 
 }
 
@@ -157,8 +194,6 @@ function reset() {
 
 
 initialize();
-
-
 
 
 
