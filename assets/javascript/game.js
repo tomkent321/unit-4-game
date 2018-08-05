@@ -83,20 +83,35 @@ for (var i = 0; i< 4; i++) {
 $(arrCrystalImage[i]).appendTo($("#crystals"));
 }
 
-//attach an id tag to each picture and assign 
+//attach an id tag to each picture and assign a random value to the picture
+
+//this is the random number generator
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//pick 4 non-repeating values at random to assign to each crystal
+var numRand;
+var arrRandom = [];
 
+for(var i = 0; i < 4; i++){
+do {
+   numRand = getRandomInt(1,12)
+} while (arrRandom.indexOf(numRand) != -1 );
+arrRandom.push(numRand);
+}
+
+//add the id and val to each picture
 $('.cPic').each(function(index, elem) {
-(this).attr('id', 'pick-' + index);
-$(this).attr('val', getRandomInt(1,12));
+$(this).attr('id', 'pick-' + index);
+$(this).attr('val', arrRandom[index]);
 
 });
 
+
 //create random computer target and append to the page
-//show wins, losses and current score on page
+
+targetValue = getRandomInt(19,129);
 
 }
 
@@ -106,6 +121,8 @@ $(this).attr('val', getRandomInt(1,12));
 
 function getChoice() {
 
+
+//show wins, losses and current score on page
 //create on click functions for the crystals
 //grab the value of the crystal that is clicked - maybe use $(this)
 //add the value to the current score and render that to the page
