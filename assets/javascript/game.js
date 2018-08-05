@@ -44,7 +44,7 @@ var thisVal = 0;
 
 
 
-function setPictures() {
+function setUp() {
 
 $(".cPic").remove();  // clear out any previous pictures on a reintialize
 
@@ -104,18 +104,14 @@ do {
 arrRandom.push(numRand);
 }
 
-//add the id and val to each picture
+//add the id as the value for each picture
 
 $('.cPic').each(function(index, elem) {
 $(this).attr('id',arrRandom[index]);  //Mickey mouse way since I couldn't figure out how the hell to retrieve data-value
 //$(this).attr("value",arrRandom[index]); //This is what I wanted to use.
-
-
 });
 
-
 //create random computer target and append to the page
-
 
 $("#targetNum").html(targetValue = getRandomInt(19,129));
 }
@@ -137,81 +133,33 @@ function evalChoice() {
         choiceValue += thisVal;
         $("#accumValue").html("Current Value: " + choiceValue);
         
-        if(choiceValue === targetValue){ 
-            //youWin();
-            alert("you win!");
-        } else if (choiceValue > targetValue) {
-            //youLoose();
-            alert("you loose!");
-        
+            if (choiceValue > targetValue) {
+                //youLoose();
+                alert("you loose!");
+            } else if (choiceValue === targetValue){ 
+                //youWin();
+                alert("you win!");
+            }
 
-    }
+    });
 
-    
-
-
-
-
-
-
-
-
-//show wins, losses and current score on page
-//create on click functions for the crystals
-
-
-
-// $(".cPic").on("click", function(){
-//     var thisVal = $("#pick-0").data("value");
-//     alert("V: " + thisVal);
-// });
-
-
-// $('#myElId').data('nameYourData', { foo: 'bar' });
-
-// $('#myElId').data('nameYourData', 15);
-
-// var myData = $('#myElId').data('nameYourData');
-//grab the value of the crystal that is clicked - maybe use $(this)
-//add the value to the current score and render that to the page
-
-
-
-
-// $('#myElId').data('nameYourData', { foo: 'bar' });
-
-// $('#myElId').data('nameYourData', 15);
-// var myData = $('#myElId').data('nameYourData');
-
-
-
-// $('#myElId').data('nameYourData', { foo: 'bar' });
-
-
-// var myData = $('#myElId').data('nameYourData');
-
-function scoreChoice() {
-//if current score is equal to the target number, then we win
-//alert that the user has won
-//wins++
-//call the win page
-//call a reset function
-
-//if current score is greater than target score, you lose
-//alert that they have lost
-//losses++
-//reset function
 }
 
 
-function showWin() {
+
+
+
+
+
+
+function youWin() {
 // ++wins
 //show winner splash
 //play again
 // call reset
 }
 
-function showLose() {
+function youLose() {
 // ++losses
 // show loser screen
 // call reset
@@ -228,7 +176,7 @@ function reset() {
 
 
 
-setPictures();
+setUp();
 evalChoice();
 
 
