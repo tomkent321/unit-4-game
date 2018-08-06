@@ -13,16 +13,54 @@
     <title>Crystal Game</title>
   </head>
   <body>
-    <h1>Crystal Collector!</h1>
 
-<div id="bigSplash"></div>
+    <header></header>
 
-<div id="targetNum"></div>
-    <div id="crystals"></div>
-    <div id="accumValue"></div>
+    <div class="container"></div>
 
-<div id="wins"></div>
-<div id="losses"></div>
+    <!-- header row -->
+    <div class="row">
+      <div class="header">
+          <h1>Crystal Collector!</h1>
+          <div id="bigSplash"></div>
+      </div>
+    </div>
+
+
+    <!-- target score row -->
+    <div class="row">
+      <div class="col-lg-3">
+          <div id="targetNum"></div>
+      </div>
+    </div>
+
+    <!-- crystals and wins/losses row -->
+
+    <div class="row">
+
+        <div id="crystals" class="col-lg-8"></div>
+        <div id="scoreboard" class="col-lg-4">
+            <div class="main-score" id="wins"></div>
+            <div class="main-score"id="losses"></div>
+        </div>
+    </div>
+
+    <!-- current score row -->
+    <div class="row">
+
+        <div id="accumValue" class="col-lg-3"></div>
+
+    </div>
+
+    <!-- instructions row -->
+    <div class="row">
+
+        <div id="instructions" class="col-lg-8">
+          <p>Play by all the rules!</p>
+        </div>
+
+    </div>
+
 
 
 

@@ -31,7 +31,7 @@ var arrCrystalImage = [];
 var arrCrystalValue = [];
 var arrIndexNum = [];
 var indexNum;
-var wins, losses, gamesPlayed;
+var wins = 0, losses = 0, gamesPlayed = 0;
 var targetValue;
 var useArray;
 var blackBack = true;
@@ -40,6 +40,7 @@ var choiceValues = []; //may not need this
 var score;
 var choiceValue = 0;
 var thisVal = 0;
+
 
 
 
@@ -58,28 +59,28 @@ var arrCrystalImage = [];
 
 for (var i = 0; i < 4; i++) {
 
-// if last used background is black use white   
-if (blackBack) {
-colorArr = arrCrystalWhite;
-} else {
-colorArr = arrCrystalBlack;
-}
+    // if last used background is black use white   
+    if (blackBack) {
+    colorArr = arrCrystalWhite;
+    } else {
+    colorArr = arrCrystalBlack;
+    }
 
-do {
-indexNum = Math.floor((Math.random() * colorArr.length));   
+    do {
+    indexNum = Math.floor((Math.random() * colorArr.length));   
 
-} while (arrIndexNum.indexOf(indexNum) != -1 );
-arrIndexNum.push(indexNum);
-arrCrystalImage.push(colorArr[indexNum]);
+    } while (arrIndexNum.indexOf(indexNum) != -1 );
+    arrIndexNum.push(indexNum);
+    arrCrystalImage.push(colorArr[indexNum]);
 }
 
 //toggle the background style for the next initialization
 
 if(blackBack) {
-blackBack = false; 
-} else {
-blackBack = true;
-}
+    blackBack = false; 
+    } else {
+    blackBack = true;
+    }
 
 //arrCrystalImage now has all of the image names loaded and an id tag of "pick-1 through pick-4"
 
@@ -99,22 +100,26 @@ var numRand;
 var arrRandom = [];
 
 for(var i = 0; i < 4; i++){
-do {
-   numRand = getRandomInt(1,12)
-} while (arrRandom.indexOf(numRand) != -1 );
-arrRandom.push(numRand);
+    do {
+    numRand = getRandomInt(2,12)
+    } while (arrRandom.indexOf(numRand) != -1 );
+    arrRandom.push(numRand);
 }
 
 //add the id as the value for each picture
 
 $('.cPic').each(function(index, elem) {
-$(this).attr('id',arrRandom[index]);  //Mickey mouse way since I couldn't figure out how the hell to retrieve data-value
+$(this).attr('id',arrRandom[index]);  //Mickey mouse way since I couldn't figure out how to retrieve data-value
 //$(this).attr("value",arrRandom[index]); //This is what I wanted to use.
 });
 
 //create random computer target and append to the page
 
-$("#targetNum").html(targetValue = getRandomInt(19,129));
+
+targetValue = getRandomInt(19,120)
+$("#targetNum").html("Target Score: " + targetValue);
+
+evalChoice();
 }
 
 
@@ -131,14 +136,16 @@ function evalChoice() {
         thisVal = parseInt($(this).attr('id')); 
 
         choiceValue += thisVal;
-        $("#accumValue").html("Current Value: " + choiceValue);
+        $("#accumValue").html("Current Score: " + choiceValue);
         
             if (choiceValue > targetValue) {
-                //youLoose();
                 alert("you loose!");
+                youLose();
+
             } else if (choiceValue === targetValue){ 
-                //youWin();
+                
                 alert("you win!");
+                youWin();
             }
 
     });
@@ -149,14 +156,12 @@ function evalChoice() {
 
 
 
-
-
 function youWin() {
 
-    wins++;
-
+wins++;
+$("#wins").html("Wins: " +  wins);
 var mainMsg = $("<div>").text("You Win!").attr("id","big-msg");
-$(mainMsg).appendTo("bigSplash");
+$(mainMsg).appendTo("#bigSplash");
 
 var keepGoing = $("<p>").text("click to continue").attr("class","continue").attr("id","go");
 $(keepGoing).appendTo("#bigSplash");
@@ -165,30 +170,63 @@ var stopGoing = $("<p>").text("click to quit").attr("class","continue").attr("id
 $(stopGoing).appendTo("#bigSplash");
 
 $("#go").on("click", function() {
-    playGame();
+    reset();
+    //playGame();
+});
+$("#stop").on("click", function() {
+    return;
 
 });
 
 }
 
 function youLose() {
-// ++losses
-// show loser screen
-// call reset
+    losses++;
+    $("#losses").html("Losses: " +  losses);
+    var mainMsg = $("<div>").text("You Loose!").attr("id","big-msg");
+    $(mainMsg).appendTo("#bigSplash");
+    
+    var keepGoing = $("<p>").text("click to continue").attr("class","continue").attr("id","go");
+    $(keepGoing).appendTo("#bigSplash");
+    
+    var stopGoing = $("<p>").text("click to quit").attr("class","continue").attr("id","stop");;
+    $(stopGoing).appendTo("#bigSplash");
+    
+    $("#go").on("click", function() {
+        reset();
+        // playGame();
+    
+    });
+    $("#stop").on("click", function() {
+        return;
+    
+    });
+
 
 }
+
+function reset() {
+    choiceValue = 0;
+    $("#accumValue").html("Current Score: " + choiceValue);
+    $("#big-msg").remove();
+    $(".continue").remove();
+    playGame();
+}
+
 
 function initialize() {
- wins = 0;
- losses = 0;
- gamesPlayed = 0;
+ wins = 0, losses = 0;
+ $("#wins").html("Wins: " + wins);
+ $("#losses").html("Wins: " + losses);
+$("#accumValue").html("Current Score: " + 0);
+ 
 
 }
 
 
-
+initialize();
 playGame();
-evalChoice();
+//evalChoice();
 
 
 
