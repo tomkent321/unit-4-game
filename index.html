@@ -15,21 +15,37 @@
   <body>
 
     <header></header>
+<div class="container-fluid">
+<!-- header row -->
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+  
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Instructions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Play Again</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Quit</a>
+    </li>
+  </ul>
+</nav>
 
-    <div class="container"></div>
 
-    <!-- header row -->
-    <div class="row">
-      <div class="header">
-          <h1>Crystal Collector!</h1>
-          <div id="bigSplash"></div>
-      </div>
-    </div>
+
+
+
+    <div class="container">
+
+      <div class"#bigSplash"></div>
+    
 
 
     <!-- target score row -->
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 statusNums">
           <div id="targetNum"></div>
       </div>
     </div>
@@ -38,7 +54,7 @@
 
     <div class="row">
 
-        <div id="crystals" class="col-lg-8"></div>
+        <div id="crystals" class="col-lg-7"></div>
         <div id="scoreboard" class="col-lg-4">
             <div class="main-score" id="wins"></div>
             <div class="main-score"id="losses"></div>
@@ -46,11 +62,13 @@
     </div>
 
     <!-- current score row -->
+    
     <div class="row">
-
-        <div id="accumValue" class="col-lg-3"></div>
-
-    </div>
+        <div class="col-lg-3 statusNums">
+            <div id="accumValue"></div>
+        </div>
+      </div>
+    
 
     <!-- instructions row -->
     <div class="row">
@@ -60,6 +78,12 @@
         </div>
 
     </div>
+
+    <!-- end of container -->
+  </div>
+<!-- end of container-fluid -->
+
+</div>
 
 
 

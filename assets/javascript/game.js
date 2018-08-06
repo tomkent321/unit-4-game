@@ -66,6 +66,12 @@ for (var i = 0; i < 4; i++) {
     colorArr = arrCrystalBlack;
     }
 
+// change all the styles to the right background color here
+
+
+
+
+
     do {
     indexNum = Math.floor((Math.random() * colorArr.length));   
 
@@ -117,7 +123,7 @@ $(this).attr('id',arrRandom[index]);  //Mickey mouse way since I couldn't figure
 
 
 targetValue = getRandomInt(19,120)
-$("#targetNum").html("Target Score: " + targetValue);
+$("#targetNum").html("Target Score: " + targetValue).attr("class","h3");
 
 evalChoice();
 }
@@ -136,7 +142,7 @@ function evalChoice() {
         thisVal = parseInt($(this).attr('id')); 
 
         choiceValue += thisVal;
-        $("#accumValue").html("Current Score: " + choiceValue);
+        $("#accumValue").html("Current Score: " + choiceValue).attr("class","h2").attr("class", "statusNums");
         
             if (choiceValue > targetValue) {
                 alert("you loose!");
@@ -216,12 +222,12 @@ function reset() {
 
 function initialize() {
  wins = 0, losses = 0;
- $("#wins").html("Wins: " + wins);
- $("#losses").html("Wins: " + losses);
-$("#accumValue").html("Current Score: " + 0);
+ $("#wins").html("Wins: " + wins).attr("class","h3");
+ $("#losses").html("Losses: " + losses).attr("class","h3");
+$("#accumValue").html("Current Score: " + 0).attr("class","h3");
  
-
 }
+
 
 
 initialize();
