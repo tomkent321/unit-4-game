@@ -31,7 +31,7 @@ var arrCrystalImage = [];
 var arrCrystalValue = [];
 var arrIndexNum = [];
 var indexNum;
-var wins, losses;
+var wins, losses, gamesPlayed;
 var targetValue;
 var useArray;
 var blackBack = true;
@@ -44,9 +44,10 @@ var thisVal = 0;
 
 
 
-function setUp() {
+function playGame() {
 
-$(".cPic").remove();  // clear out any previous pictures on a reintialize
+$(".cPic").remove();  // clear out any previous pictures on a replay
+score = 0;
 
 // 1. randomly pick 4 different crystal images and get their names in an array. I want differnt crystals each time to make it interesting  *********
 
@@ -126,7 +127,6 @@ $("#targetNum").html(targetValue = getRandomInt(19,129));
 
 function evalChoice() {
 
-
     $(".cPic").on("click", function(){
         thisVal = parseInt($(this).attr('id')); 
 
@@ -142,7 +142,6 @@ function evalChoice() {
             }
 
     });
-
 }
 
 
@@ -153,10 +152,23 @@ function evalChoice() {
 
 
 function youWin() {
-// ++wins
-//show winner splash
-//play again
-// call reset
+
+    wins++;
+
+var mainMsg = $("<div>").text("You Win!").attr("id","big-msg");
+$(mainMsg).appendTo("bigSplash");
+
+var keepGoing = $("<p>").text("click to continue").attr("class","continue").attr("id","go");
+$(keepGoing).appendTo("#bigSplash");
+
+var stopGoing = $("<p>").text("click to quit").attr("class","continue").attr("id","stop");;
+$(stopGoing).appendTo("#bigSplash");
+
+$("#go").on("click", function() {
+    playGame();
+
+});
+
 }
 
 function youLose() {
@@ -166,17 +178,16 @@ function youLose() {
 
 }
 
-function reset() {
-//generate a new random number
-//generate four new crystal values
-//reset current score to zero
-//append page to show all changes
+function initialize() {
+ wins = 0;
+ losses = 0;
+ gamesPlayed = 0;
 
 }
 
 
 
-setUp();
+playGame();
 evalChoice();
 
 
