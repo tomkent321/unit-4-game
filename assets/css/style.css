@@ -76,7 +76,8 @@
 #crystals {
 
     padding: 25px;
-    border: 2px black solid;
+    border: 1px black solid;
+    margin-left: 10px;
     
 }
 
@@ -88,7 +89,7 @@
 #losses{
     border-bottom: 1px rgb(193, 176, 176) solid;
     margin-bottom: 10px;
-    border-s
+
 }
 
 .header-text {

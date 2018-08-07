@@ -36,7 +36,6 @@ var targetValue;
 var useArray;
 var blackBack = true;
 var colorArr;
-var choiceValues = []; //may not need this
 var score;
 var choiceValue = 0;
 var thisVal = 0;
@@ -66,12 +65,6 @@ for (var i = 0; i < 4; i++) {
     } else {
     colorArr = arrCrystalBlack;
     }
-
-// change all the styles to the right background color here
-
-
-
-
 
     do {
     indexNum = Math.floor((Math.random() * colorArr.length));   
@@ -136,7 +129,6 @@ function evalChoice() {
         
             if (choiceValue > targetValue) {
 
-
                 youLose();
 
             } else if (choiceValue === targetValue){ 
@@ -145,13 +137,11 @@ function evalChoice() {
             }
 
     });
-//}
 }
 
 function youLose() {
-
     
-        losses++;
+    losses++;
 
     $("#losses").text("Losses: " + losses);
 
@@ -169,7 +159,7 @@ function youLose() {
 function youWin() {
 
     wins++;
-    winnings++;
+    winnings+=choiceValue;
 
     $("#wins").text("Wins: " + wins);
     $("#winnings").text("Winnings: " + winnings);
@@ -185,7 +175,7 @@ function keepGoing() {
 
     $("#go").on("click", function() {
         reset();
-        playGame();
+        
     });
 
     $("#stop").on("click", function() {
@@ -200,8 +190,7 @@ function killGame() {
 
 function reset() {
     choiceValue = 0;
-    $("#accumValue").html("Current Score: " + choiceValue);
-    
+    $("#accumValue").html("Current Score: " + choiceValue);  
     $("#you-win").hide();
     $("#you-lose").hide();
     $("#go").hide();
@@ -211,7 +200,7 @@ function reset() {
     //toggle the background color
 
 
-    if(blackBack) {
+    if (blackBack) {
             blackBack = false; 
             } else {
             blackBack = true;
@@ -226,14 +215,52 @@ function changeBackground() {
 
   if(blackBack) {
 
-    //set white background css
-  } else {
+    //set white background css  just copy below and change them back
+    $(".container-fluid").css({
+        backgroundColor: "white",
+        
+
+    });    
+    $(".container").css({
+        backgroundColor: "white",
+
+    });
+
+    $("#targetNum").css({
+        color: "black"
+
+    });
+
+    $("#crystals").css({
+        backgroundColor: "white",
+        borderSize: "0.5px",
+        borderColor: "black",
+        borderStyle: "solid"
+    });
+
+    $("#scoreboard").css({
+        color: "black"
+
+    });
+
+    $("#accumValue").css({
+        color: "black"
+
+    });
+
+    $("#instructions").css({
+        color: "black"
+
+    });
+
+} else {
 
     // set dark background css
 
 
     $(".container-fluid").css({
         backgroundColor: "black",
+        
 
     });    
     $(".container").css({
@@ -259,6 +286,11 @@ function changeBackground() {
     });
 
     $("#accumValue").css({
+        color: "azure"
+
+    });
+
+    $("#instructions").css({
         color: "azure"
 
     });
@@ -294,8 +326,8 @@ function initialize() {
 
 
 initialize();
-playGame();
-//evalChoice();
+//playGame();
+reset();
 
 });
 
