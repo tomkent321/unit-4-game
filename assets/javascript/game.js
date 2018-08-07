@@ -123,10 +123,10 @@ evalChoice();
 }
 
 
-
-
-
 function evalChoice() {
+
+
+    //if (choiceValue < targetValue && choiceValue !== targetValue) {
 
     $(".cPic").on("click", function(){
         thisVal = parseInt($(this).attr('id')); 
@@ -136,6 +136,7 @@ function evalChoice() {
         
             if (choiceValue > targetValue) {
 
+
                 youLose();
 
             } else if (choiceValue === targetValue){ 
@@ -144,15 +145,13 @@ function evalChoice() {
             }
 
     });
+//}
 }
-
-
-
-
 
 function youLose() {
 
-    losses++;
+    
+        losses++;
 
     $("#losses").text("Losses: " + losses);
 
@@ -194,9 +193,9 @@ function keepGoing() {
     });
 }
 
-// function killGame() {
-//     return;
-// }
+function killGame() {
+    return;
+}
 
 
 function reset() {
@@ -218,8 +217,62 @@ function reset() {
             blackBack = true;
             }
 
+    changeBackground();            
     playGame();
 }
+
+
+function changeBackground() {
+
+  if(blackBack) {
+
+    //set white background css
+  } else {
+
+    // set dark background css
+
+
+    $(".container-fluid").css({
+        backgroundColor: "black",
+
+    });    
+    $(".container").css({
+        backgroundColor: "black",
+
+    });
+
+    $("#targetNum").css({
+        color: "azure"
+
+    });
+
+    $("#crystals").css({
+        backgroundColor: "black",
+        borderSize: "0.5px",
+        borderColor: "azure",
+        borderStyle: "solid"
+    });
+
+    $("#scoreboard").css({
+        color: "azure"
+
+    });
+
+    $("#accumValue").css({
+        color: "azure"
+
+    });
+
+  }
+
+    
+
+
+    
+}
+
+
+
 
 
 function initialize() {
