@@ -10,28 +10,19 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Poiret+One|Rosario|Yatra+One" rel="stylesheet">
+
     <title>Crystal Game</title>
   </head>
   <body>
 
-    <header></header>
+    <header>
 <div class="container-fluid">
-<!-- header row -->
-<nav class="navbar navbar-dark bg-dark">
-    <!-- Navbar content -->
-  
-<ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Instructions</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Play Again</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Quit</a>
-    </li>
-  </ul>
-</nav>
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-body header-text">
+      Crystal Collector
+    </div>
+  </div>
 
 
 
@@ -45,7 +36,7 @@
 
     <!-- target score row -->
     <div class="row">
-      <div class="col-lg-3 statusNums">
+      <div class="col-lg-5 statusNums">
           <div id="targetNum"></div>
       </div>
     </div>
@@ -55,16 +46,25 @@
     <div class="row">
 
         <div id="crystals" class="col-lg-7"></div>
-        <div id="scoreboard" class="col-lg-4">
+        <div id="scoreboard" class="col-lg-2">
             <div class="main-score" id="wins"></div>
             <div class="main-score"id="losses"></div>
+            <div class="main-score"id="winnings"></div>
+        </div>
+        <div id="end-game" class="col-lg-2">
+          <div class = "row" id="you-win">You Win!</div>
+          <div class = "row" id="you-lose">You Lose!</div>
+          <div class = "row">
+          </div>
+          <div id="go">Continue1</div>
+          <div id="stop">Quit</div>
         </div>
     </div>
 
     <!-- current score row -->
     
     <div class="row">
-        <div class="col-lg-3 statusNums">
+        <div class="col-lg-5 statusNums">
             <div id="accumValue"></div>
         </div>
       </div>
@@ -73,9 +73,11 @@
     <!-- instructions row -->
     <div class="row">
 
-        <div id="instructions" class="col-lg-8">
-          <p>Play by all the rules!</p>
+        <div id="instructions" class="col-lg-6">
+          <p>Play by all the rules! Play by all the rules!Play by all the rules! Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!Play by all the rules!</p>
         </div>
+
+        
 
     </div>
 

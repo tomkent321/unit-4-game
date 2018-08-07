@@ -1,11 +1,72 @@
 .cPic {
     height: 150px;
     width: 150px;
+    
 }
 
-.bigSplash {
-    height: 500px;
-    background-color: aquamarine;
+/* #big-msg {
+   
+    font-size: 23px;
+    width: 250;
+    font-weight: bolder;
+    color: white;
+    background-color: red;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0 0 40px;
+} */
+
+#lost {
+    font-size: 23px;
+    width: 250;
+    font-weight: bolder;
+    color: white;
+    background-color: red;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0 0 40px;
+}
+
+* #won {
+    font-size: 23px;
+    width: 250;
+    font-weight: bolder;
+    color: white;
+    background-color: green;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0 0 40px;
+
+
+
+
+
+} 
+
+#go, #stop {
+   
+    font-size: 15px;
+    width: 250;
+    font-weight: bolder;
+    /* color: white; */
+    padding: 10px;
+    text-align: center;
+}
+
+#go {
+    /* background-color: rgb(104, 233, 99); */
+    color: green;
+    border: 1px green solid;
+    margin: 15px 0 0 40px;
+    background-color: rgba(19, 104, 19, 0.167);
+}
+
+#stop{
+    /* background-color: rgb(247, 103, 103); */
+    color: rgb(177, 7, 7);
+    border: 1px rgb(177, 7, 7) solid;
+    margin-left: 40px;
+    background-color: rgba(177, 7, 7, 0.139);
 }
 
 .statusNums {
@@ -20,6 +81,45 @@
 }
 
 #scoreboard {
-    padding: 25px;
+    padding: 15px;
     margin: 30px 0 0 40px;
 }
+
+#losses{
+    border-bottom: 1px rgb(193, 176, 176) solid;
+    margin-bottom: 10px;
+}
+
+.header-text {
+    font-family: 'Poiret One', cursive;
+    font-size: 35px;
+    color: rgb(187, 187, 203);
+    font-weight: bolder;
+    text-align: center;
+
+}
+
+
+#you-win, #you-lose {
+    font-size: 23px;
+    width: 250;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0 0 40px;
+}
+
+#you-win {
+    background-color: green;
+}
+
+#you-lose {
+    background-color: red;
+}
+
+/* font-family: 'Poiret One', cursive;
+font-family: 'Audiowide', cursive;
+font-family: 'Rosario', sans-serif;
+font-family: 'Yatra One', cursive; */
+

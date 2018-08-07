@@ -1,7 +1,7 @@
 
 
 
-
+$( document ).ready(function() {
 
 //list of variables
 
@@ -40,6 +40,7 @@ var choiceValues = []; //may not need this
 var score;
 var choiceValue = 0;
 var thisVal = 0;
+var winnings = 0;
 
 
 
@@ -80,13 +81,6 @@ for (var i = 0; i < 4; i++) {
     arrCrystalImage.push(colorArr[indexNum]);
 }
 
-//toggle the background style for the next initialization
-
-if(blackBack) {
-    blackBack = false; 
-    } else {
-    blackBack = true;
-    }
 
 //arrCrystalImage now has all of the image names loaded and an id tag of "pick-1 through pick-4"
 
@@ -132,25 +126,20 @@ evalChoice();
 
 
 
-
-
-
-
 function evalChoice() {
 
     $(".cPic").on("click", function(){
         thisVal = parseInt($(this).attr('id')); 
 
         choiceValue += thisVal;
-        $("#accumValue").html("Current Score: " + choiceValue).attr("class","h2").attr("class", "statusNums");
+        $("#accumValue").html("Current Score: " + choiceValue).attr("class","h2");
         
             if (choiceValue > targetValue) {
-                alert("you loose!");
+
                 youLose();
 
             } else if (choiceValue === targetValue){ 
                 
-                alert("you win!");
                 youWin();
             }
 
@@ -161,70 +150,91 @@ function evalChoice() {
 
 
 
+function youLose() {
+
+    losses++;
+
+    $("#losses").text("Losses: " + losses);
+
+    //put up the lose message
+
+    $("#you-lose").show();
+    $("#go").show();
+    $("#stop").show();
+
+    keepGoing();
+
+}
+
 
 function youWin() {
 
-wins++;
-$("#wins").html("Wins: " +  wins);
-var mainMsg = $("<div>").text("You Win!").attr("id","big-msg");
-$(mainMsg).appendTo("#bigSplash");
+    wins++;
+    winnings++;
 
-var keepGoing = $("<p>").text("click to continue").attr("class","continue").attr("id","go");
-$(keepGoing).appendTo("#bigSplash");
+    $("#wins").text("Wins: " + wins);
+    $("#winnings").text("Winnings: " + winnings);
+    $("#you-win").show();
+    $("#go").show();
+    $("#stop").show();
 
-var stopGoing = $("<p>").text("click to quit").attr("class","continue").attr("id","stop");;
-$(stopGoing).appendTo("#bigSplash");
-
-$("#go").on("click", function() {
-    reset();
-    //playGame();
-});
-$("#stop").on("click", function() {
-    return;
-
-});
-
+    keepGoing();
+    
 }
 
-function youLose() {
-    losses++;
-    $("#losses").html("Losses: " +  losses);
-    var mainMsg = $("<div>").text("You Loose!").attr("id","big-msg");
-    $(mainMsg).appendTo("#bigSplash");
-    
-    var keepGoing = $("<p>").text("click to continue").attr("class","continue").attr("id","go");
-    $(keepGoing).appendTo("#bigSplash");
-    
-    var stopGoing = $("<p>").text("click to quit").attr("class","continue").attr("id","stop");;
-    $(stopGoing).appendTo("#bigSplash");
-    
+function keepGoing() {
+
     $("#go").on("click", function() {
         reset();
-        // playGame();
-    
+        playGame();
     });
+
     $("#stop").on("click", function() {
-        return;
-    
+        killGame();
     });
-
-
 }
+
+// function killGame() {
+//     return;
+// }
+
 
 function reset() {
     choiceValue = 0;
     $("#accumValue").html("Current Score: " + choiceValue);
-    $("#big-msg").remove();
-    $(".continue").remove();
+    
+    $("#you-win").hide();
+    $("#you-lose").hide();
+    $("#go").hide();
+    $("#stop").hide();
+
+
+    //toggle the background color
+
+
+    if(blackBack) {
+            blackBack = false; 
+            } else {
+            blackBack = true;
+            }
+
     playGame();
 }
 
 
 function initialize() {
- wins = 0, losses = 0;
+
+ wins = 0, losses = 0; winnings = 0;
+
+ $("#you-win").hide();
+ $("#you-lose").hide();
+ $("#go").hide();
+ $("#stop").hide();
+
  $("#wins").html("Wins: " + wins).attr("class","h3");
  $("#losses").html("Losses: " + losses).attr("class","h3");
-$("#accumValue").html("Current Score: " + 0).attr("class","h3");
+ $("#winnings").html("Winnings: " + winnings).attr("class","h3");
+ $("#accumValue").html("Current Score: " + 0).attr("class","h3");
  
 }
 
@@ -234,7 +244,7 @@ initialize();
 playGame();
 //evalChoice();
 
-
+});
 
 
 
