@@ -77,7 +77,7 @@
 
     padding: 25px;
     border: 1px black solid;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     
 }
 
@@ -126,3 +126,15 @@ font-family: 'Rosario', sans-serif;
 font-family: 'Yatra One', cursive; */
 
 
+#instructions {
+    /* border-right: 1px lightgrey solid; */
+
+}
+
+.pile-pic {
+    height: 20px;
+    widows: 60px;
+}
+#winnings {
+    font-size: 18px;
+}

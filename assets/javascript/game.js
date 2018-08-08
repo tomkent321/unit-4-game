@@ -45,6 +45,7 @@ var winnings = 0;
 
 
 
+
 function playGame() {
 
 $(".cPic").remove();  // clear out any previous pictures on a replay
@@ -118,7 +119,6 @@ evalChoice();
 
 function evalChoice() {
 
-
     //if (choiceValue < targetValue && choiceValue !== targetValue) {
 
     $(".cPic").on("click", function(){
@@ -129,18 +129,30 @@ function evalChoice() {
         
             if (choiceValue > targetValue) {
 
+               
+                $(".cPic").unbind("click");
                 youLose();
 
             } else if (choiceValue === targetValue){ 
-                
+
+                $(".cPic").unbind("click");
                 youWin();
             }
 
     });
+
+
 }
+
+
+
+
+
+
 
 function youLose() {
     
+    $(".cPic").on("click", "");
     losses++;
 
     $("#losses").text("Losses: " + losses);
@@ -166,7 +178,14 @@ function youWin() {
     $("#you-win").show();
     $("#go").show();
     $("#stop").show();
+   
+    if(blackBack){
+        $('<img src="assets/images/tiny-dark.png" class="pile-pic">').appendTo("#pile");
+    } else  {
+        $('<img src="assets/images/tiny-light.png" class="pile-pic">').appendTo("#pile");
+    }
 
+    
     keepGoing();
     
 }
@@ -179,12 +198,8 @@ function keepGoing() {
     });
 
     $("#stop").on("click", function() {
-        killGame();
+        initialize();
     });
-}
-
-function killGame() {
-    return;
 }
 
 
@@ -195,16 +210,16 @@ function reset() {
     $("#you-lose").hide();
     $("#go").hide();
     $("#stop").hide();
-
+    
 
     //toggle the background color
 
 
     if (blackBack) {
-            blackBack = false; 
-            } else {
-            blackBack = true;
-            }
+        blackBack = false; 
+        } else {
+        blackBack = true;
+        }
 
     changeBackground();            
     playGame();
@@ -227,8 +242,7 @@ function changeBackground() {
     });
 
     $("#targetNum").css({
-        color: "black"
-
+        color: "black",
     });
 
     $("#crystals").css({
@@ -320,14 +334,16 @@ function initialize() {
  $("#losses").html("Losses: " + losses).attr("class","h3");
  $("#winnings").html("Winnings: " + winnings).attr("class","h3");
  $("#accumValue").html("Current Score: " + 0).attr("class","h3");
- 
+ $(".pile-pic").remove();
+ playGame();
+
 }
 
 
 
 initialize();
 //playGame();
-reset();
+//reset();
 
 });
 
